@@ -1,22 +1,8 @@
+version: '3.8'
 services:
-  mongodb:
-    image: mongo:latest
-    volumes:
-      - mongodb_data:/data/db
-    ports:
-      - "27017:27017"
-    networks:
-      - app-network
-    restart: unless-stopped
-    # Simpler healthcheck
-    healthcheck:
-      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
-      interval: 10s
-      timeout: 10s
-      retries: 5
-      start_period: 10s
-
   app:
+    env_file:
+      - .env
     build:
       context: .
       dockerfile: Dockerfile
@@ -24,27 +10,5 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - MONGODB_URI=mongodb://mongodb:27017/offer-contract-system
       - PORT=3000
-    depends_on:
-      mongodb:
-        condition: service_healthy
-    networks:
-      - app-network
     restart: unless-stopped
-    # Simple command to seed and start
-    command: >
-      sh -c "
-        echo 'Seeding the database...' &&
-        node scripts/seed-database.js &&
-        echo 'Starting the application...' &&
-        npm run start
-      "
-
-networks:
-  app-network:
-    driver: bridge
-
-volumes:
-  mongodb_data:
-    driver: local
