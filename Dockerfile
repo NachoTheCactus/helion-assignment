@@ -2,31 +2,16 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package files
+# Install dependencies first to use caching
 COPY package*.json ./
+RUN npm ci --only=production
 
-# Install global dependencies
-RUN npm install -g concurrently
-
-# Install project dependencies
-RUN npm install
-
-# Copy entire project
+# Copy the rest of the app
 COPY . .
 
-# Install dev dependencies
-RUN npm install -D tailwindcss postcss autoprefixer
-
-# Create Tailwind config if not exists
-RUN if [ ! -f tailwind.config.js ]; then \
-    npx tailwindcss init -p; \
-    fi
-
-# Build the application
+# Build step
 RUN npm run build
 
-# Expose ports
-EXPOSE 5000 5173
+EXPOSE 3000
 
-# Default command
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]

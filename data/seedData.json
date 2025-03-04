@@ -1,0 +1,56 @@
+{
+  "clients": [
+    {
+      "_id": "67c5c054564c349fce6920b1",
+      "name": "Acme Corp",
+      "email": "contact@acmecorp.com",
+      "phone": "123-456-7890",
+      "address": "123 Main St, City"
+    },
+    {
+      "_id": "67c5c054564c349fce6920b2",
+      "name": "Globex Industries",
+      "email": "info@globex.com",
+      "phone": "987-654-3210",
+      "address": "456 Oak Ave, Town"
+    },
+    {
+      "_id": "67c5c054564c349fce6920b3",
+      "name": "Stark Enterprises",
+      "email": "hello@stark.com",
+      "phone": "555-123-4567",
+      "address": "789 Pine St, Village"
+    },
+    {
+      "_id": "67c5c054564c349fce6920b4",
+      "name": "Wayne Enterprises",
+      "email": "business@wayne.com",
+      "phone": "222-333-4444",
+      "address": "101 Elm St, County"
+    },
+    {
+      "_id": "67c5c054564c349fce6920b5",
+      "name": "Umbrella Corporation",
+      "email": "support@umbrella.com",
+      "phone": "777-888-9999",
+      "address": "202 Maple Dr, State"
+    }
+  ],
+  "salesReps": [
+    {
+      "name": "John Doe"
+    },
+    {
+      "name": "Jane Smith"
+    },
+    {
+      "name": "Robert Johnson"
+    },
+    {
+      "name": "Emily Davis"
+    },
+    {
+      "name": "Michael Brown"
+    }
+  ]
+}
